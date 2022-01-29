@@ -1,0 +1,16 @@
+name: Update about.md
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: Kagerou-Discord/Kagerou
+      - name: Install hclq
+        run: |
+          curl -sSLo install.sh https://install.hclq.sh
+          sh install.sh
+      - run: cat text_ch.tf | hclq get 'data.discord_text_channel.*.name'
