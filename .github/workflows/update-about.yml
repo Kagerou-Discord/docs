@@ -13,4 +13,5 @@ jobs:
         run: |
           curl -sSLo install.sh https://install.hclq.sh
           sh install.sh
+      - run: sed -i "s/local.server_id/0/g" text_ch.tf
       - run: cat text_ch.tf | hclq get 'data.discord_text_channel.*.name'
