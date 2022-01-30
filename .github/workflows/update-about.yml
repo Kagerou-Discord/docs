@@ -20,7 +20,7 @@ jobs:
           sed -i "s/local.server_id/0/g" text_ch.tf
       - run: |
           format_as_arr () {
-            STR=$0
+            STR=$1
             STR=${STR#[}
             STR=${STR%]}
             STR=${STR//\"/}
