@@ -17,6 +17,7 @@ jobs:
           sed -i "s/discord_category_channel.//g" text_ch.tf
           sed -i -e "s/.id$//g" text_ch.tf
           sed -i "s/local.server_id/0/g" text_ch.tf
+          cat text_ch.tf | grep "local.server"
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name'
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.topic'
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.category'
