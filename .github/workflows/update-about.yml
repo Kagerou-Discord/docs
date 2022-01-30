@@ -13,10 +13,25 @@ jobs:
         run: |
           curl -sSLo install.sh https://install.hclq.sh
           sh install.sh
-      - run: |
+      - name: Remove external references
+        run: |
           sed -i "s/discord_category_channel./\"/g" text_ch.tf
           sed -i -e "s/\.id$/\"/g" text_ch.tf
           sed -i "s/local.server_id/0/g" text_ch.tf
+      - run: |
+          A=($(echo $my_string | tr ";" "\n"))
+
+          format_as_arr () {
+            STR=$0
+            STR=${STR#[}
+            STR=${STR%]}
+            STR=${STR//\"/}
+            echo $STR | tr "," "\n"
+          }
+
+          NAMES=($(format_as_str() $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')))
+          echo ${NAMES[@]}
+
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name'
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.topic'
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.category'
