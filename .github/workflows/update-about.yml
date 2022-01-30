@@ -13,7 +13,13 @@ jobs:
         run: |
           curl -sSLo install.sh https://install.hclq.sh
           sh install.sh
-      - run: sed -i "s/local.server_id/0/g" category.tf
+      - run: |
+          sed -i "s/discord_category_channel.//g" text_ch.tf
+          sed -i -e "s/.id$//g" text_ch.tf
+          sed -i "s/local.server_id/0/g" text_ch.tf
+          cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name'
+          cat text_ch.tf | hclq get 'resource.discord_text_channel.*.topic'
+          cat text_ch.tf | hclq get 'resource.discord_text_channel.*.category'
       - run: |
           NAMES=$(cat category.tf | hclq get 'resource.discord_category_channel.*.name')
           NAMES=${NAMES#[}
@@ -21,8 +27,4 @@ jobs:
           NAMES=${NAMES//\"/}
           IFS=',' read -r -a ARRAY <<< $NAMES
           echo ${ARRAY[@]}
-      - run: cat category.tf | hclq get 'resource.discord_category_channel.*.position'
-      - run: sed -i "s/local.server_id/0/g" text_ch.tf
       # TODO: カテゴリをhuman readableに置き換える
-      - run: sed -i -e "s/discord_category_channel\..*\.id/0/g" text_ch.tf
-      - run: cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name[]'
