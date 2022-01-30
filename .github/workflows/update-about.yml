@@ -28,7 +28,8 @@ jobs:
           }
 
           A=$(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')
-          format_as_arr $A
+          AA=($(format_as_arr $A))
+          echo ${AA[@]}
 
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name'
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.topic'
