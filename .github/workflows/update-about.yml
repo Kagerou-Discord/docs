@@ -27,8 +27,6 @@ jobs:
             echo $STR | tr "," "\n"
           }
 
-          echo $STR
-
           NAMES=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')))
           TOPICS=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.topic')))
           CATS=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.category')))
