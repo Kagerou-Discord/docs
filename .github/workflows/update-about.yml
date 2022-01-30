@@ -34,11 +34,4 @@ jobs:
           echo ${NAMES[@]}
           echo ${TOPICS[@]}
           echo ${CATS[@]}
-      # - run: |
-      #     NAMES=$(cat category.tf | hclq get 'resource.discord_category_channel.*.name')
-      #     NAMES=${NAMES#[}
-      #     NAMES=${NAMES%]}
-      #     NAMES=${NAMES//\"/}
-      #     IFS=',' read -r -a ARRAY <<< $NAMES
-      #     echo ${ARRAY[@]}
       # TODO: カテゴリをhuman readableに置き換える
