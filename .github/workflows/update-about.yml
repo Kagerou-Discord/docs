@@ -27,8 +27,7 @@ jobs:
             echo $STR | tr "," "\n"
           }
 
-          A=$(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')
-          AA=($(format_as_arr $A))
+          AA=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')))
           echo ${AA[@]}
 
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name'
