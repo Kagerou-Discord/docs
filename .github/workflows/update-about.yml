@@ -20,12 +20,14 @@ jobs:
           sed -i "s/local.server_id/0/g" text_ch.tf
       - run: |
           format_as_arr () {
-            STR=$1
+            local STR=$1
             STR=${STR#[}
             STR=${STR%]}
             STR=${STR//\"/}
             echo $STR | tr "," "\n"
           }
+
+          echo $STR
 
           NAMES=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')))
           TOPICS=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.topic')))
