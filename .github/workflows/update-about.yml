@@ -31,7 +31,7 @@ jobs:
           TOPICS=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.topic')))
           CATS=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.category')))
 
-          for name in "${!NAMES[@]}"; do
+          for i in "${!NAMES[@]}"; do
             echo "${NAMES[$i]}"
             echo "${TOPICS[$i]}"
             echo "${CATS[$i]}"
