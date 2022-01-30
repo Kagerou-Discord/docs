@@ -29,7 +29,7 @@ jobs:
             echo $STR | tr "," "\n"
           }
 
-          NAMES=($(format_as_str() $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')))
+          NAMES=(`format_as_str() $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')`)
           echo ${NAMES[@]}
 
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name'
