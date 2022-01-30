@@ -19,7 +19,9 @@ jobs:
           NAMES=${NAMES/[/(}
           NAMES=${NAMES/]/)}
           NAMES=${NAMES//,/ }
-          echo $NAMES
+          for i in "${!NAMES[@]}"; do
+            echo "$i => ${NAMES[$i]}"
+          done
       - run: cat category.tf | hclq get 'resource.discord_category_channel.*.position'
       - run: sed -i "s/local.server_id/0/g" text_ch.tf
       # TODO: カテゴリをhuman readableに置き換える
