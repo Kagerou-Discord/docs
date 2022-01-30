@@ -19,8 +19,6 @@ jobs:
           sed -i -e "s/\.id$/\"/g" text_ch.tf
           sed -i "s/local.server_id/0/g" text_ch.tf
       - run: |
-          A=($(echo $my_string | tr ";" "\n"))
-
           format_as_arr () {
             STR=$0
             STR=${STR#[}
@@ -29,7 +27,8 @@ jobs:
             echo $STR | tr "," "\n"
           }
 
-          NAMES=(`format_as_str() $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')`)
+          A=$(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')
+          NAMES=(`format_as_str() $A`)
           echo ${NAMES[@]}
 
           cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name'
