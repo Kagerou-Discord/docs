@@ -25,5 +25,4 @@ jobs:
       - run: sed -i "s/local.server_id/0/g" text_ch.tf
       # TODO: カテゴリをhuman readableに置き換える
       - run: sed -i -e "s/discord_category_channel\..*\.id/0/g" text_ch.tf
-      - run: cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name'
-      - run: cat text_ch.tf | hclq get 'resource.discord_text_channel.keys[]'
+      - run: cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name[]'
