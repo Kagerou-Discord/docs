@@ -44,6 +44,7 @@ jobs:
         run: |
           EXISTS=$(git status --short | wc -l)
           echo "::set-output name=exists::$EXISTS"
+      - run: echo ${{ steps.updates.outputs.exists }}
       - uses: Lucky3028/git-as-gha@v1.0.0
       - name: Commit channels.md changes
         run: |
