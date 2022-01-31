@@ -23,8 +23,11 @@ jobs:
           ls | grep text-ch-parser | xargs 7z e -oout
           ls out | grep text-ch-parser | xargs -I FILE mv out/FILE ./parser
           chmod +x parser
-          ./parser -f text_ch.tf -w result.md
-          cat result.md
+          ./parser -f text_ch.tf -w channels.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # TODO: カテゴリをhuman readableに置き換える
+      - uses: Lucky3028/git-as-gha@v1.0.0
+      - run: |
+          git add channels.md
+          git commit -m "docs(channels.md): Update channels list"
+          git push origin "${GITHUB_REF#refs/heads/}"
