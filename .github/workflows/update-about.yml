@@ -20,7 +20,7 @@ jobs:
           sed -i "s/local.server_id/0/g" text_ch.tf
       - run: |
           gh release download --repo Kagerou-Discord/text-ch-parser --pattern "*linux_amd64.zip"
-          ls | grep text-ch-parser | xargs 7z e -o out
+          ls | grep text-ch-parser | xargs 7z e -oout
           ls out | grep text-ch-parser | xargs -I FILE mv FILE ./parser
           chmod +x parser
           ./parser -f text_ch.tf -w result.md
