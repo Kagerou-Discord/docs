@@ -40,7 +40,8 @@ jobs:
         with:
           name: chs
       - uses: Lucky3028/git-as-gha@v1.0.0
-      - run: |
+      - name: Commit channels.md changes
+        run: |
           git add channels.md
           git commit -m "docs(channels.md): Update channels list"
           git push origin "${GITHUB_REF#refs/heads/}"
