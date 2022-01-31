@@ -24,4 +24,6 @@ jobs:
           chmod +x text-ch-parser
           ./text-ch-parser -f text_ch.tf -w result.md
           cat result.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # TODO: カテゴリをhuman readableに置き換える
