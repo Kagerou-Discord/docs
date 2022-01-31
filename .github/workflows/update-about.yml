@@ -45,4 +45,4 @@ jobs:
           git add channels.md
           git commit -m "docs(channels.md): Update channels list"
           git push origin "${GITHUB_REF#refs/heads/}"
-        if: '${{ $(git status --short | wc -l) != 0 }}'
+        if: '$(git status --short | wc -l) != 0'
