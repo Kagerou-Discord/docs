@@ -47,4 +47,4 @@ jobs:
           git add channels.md
           git commit -m "docs(channels.md): Update channels list"
           git push origin "${GITHUB_REF#refs/heads/}"
-        if: ${{ steps.updates.outputs.exists }} != '0'
+        if: steps.updates.outputs.exists != '0'
