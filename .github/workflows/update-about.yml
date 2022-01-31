@@ -9,10 +9,6 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: Kagerou-Discord/Kagerou
-      - name: Install hclq
-        run: |
-          curl -sSLo install.sh https://install.hclq.sh
-          sh install.sh
       - name: Remove external references
         run: |
           sed -i "s/discord_category_channel./\"/g" text_ch.tf
