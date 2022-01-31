@@ -19,22 +19,9 @@ jobs:
           sed -i -e "s/\.id$/\"/g" text_ch.tf
           sed -i "s/local.server_id/0/g" text_ch.tf
       - run: |
-          format_as_arr () {
-            local STR=$1
-            STR=${STR#[}
-            STR=${STR%]}
-            STR=${STR//\"/}
-            echo $STR | tr "," "\n"
-          }
-
-          NAMES=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.name')))
-          TOPICS=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.topic')))
-          CATS=($(format_as_arr $(cat text_ch.tf | hclq get 'resource.discord_text_channel.*.category')))
-
-          for i in "${!NAMES[@]}"; do
-            echo "${NAMES[$i]}"
-            echo "${TOPICS[$i]}"
-            echo "${CATS[$i]}"
-            echo ""
-          done
+          gh release download --repo Kagerou-Discord/text-ch-parser --pattern "*linux_amd64.zip"
+          ls | grep text-ch-parser | xargs 7z x
+          chmod +x text-ch-parser
+          ./text-ch-parser -f text_ch.tf -w result.md
+          cat result.md
       # TODO: カテゴリをhuman readableに置き換える
