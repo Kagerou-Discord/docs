@@ -26,6 +26,17 @@ jobs:
           ./parser -f text_ch.tf -w channels.md
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: chs
+          path: channels.md
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: chs
       - uses: Lucky3028/git-as-gha@v1.0.0
       - run: |
           git add channels.md
