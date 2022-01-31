@@ -21,7 +21,7 @@ jobs:
       - run: |
           gh release download --repo Kagerou-Discord/text-ch-parser --pattern "*linux_amd64.zip"
           ls | grep text-ch-parser | xargs 7z e -oout
-          ls out | grep text-ch-parser | xargs -I FILE mv FILE ./parser
+          ls out | grep text-ch-parser | xargs -I FILE mv out/FILE ./parser
           chmod +x parser
           ./parser -f text_ch.tf -w result.md
           cat result.md
