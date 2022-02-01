@@ -7,3 +7,4 @@ This repository contains various documents about Lucky3028's Discord server, Kag
 * [for-newcomers](./for-newcomers.md)
 * [rules](./rules.md)
 * [about](./about.md)
+* [channels](./channels.md)
