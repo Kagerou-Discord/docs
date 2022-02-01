@@ -1,6 +1,5 @@
 name: Update channels.md
 on:
-  push:
   workflow_dispatch:
 jobs:
   parse:
