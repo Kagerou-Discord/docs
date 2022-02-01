@@ -1,4 +1,4 @@
-name: Update about.md
+name: Update channels.md
 on:
   push:
   workflow_dispatch:
