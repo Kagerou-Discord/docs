@@ -78,6 +78,10 @@ Discordがシステムイベントメッセージを送信します。
 
 Carl-botのログです。
 
+### punishment-log
+
+Carl-botの処罰ログです。
+
 ### community-update
 
 Discordが送信するコミュニティアップデート情報です。
