@@ -38,6 +38,10 @@
 
 Twitter等で使えるようなネタ画像を集めています。
 
+### command
+
+何かしらのコマンドはこちらでご利用ください。
+
 ## read_only
 
 ### system-log
